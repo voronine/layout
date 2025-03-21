@@ -9,8 +9,9 @@ import UserRow from './UserRow';
 import UserDetails from './UserDetails';
 import '../../styles/Dashboard.scss';
 import { User } from '../../types/User';
+import DashboardMenu from '../Menu/DashboardMenu';
 
-const { Content } = Layout;
+const { Header, Content } = Layout;
 
 const Dashboard: React.FC = () => {
   const authUser = useSelector((state: RootState) => state.auth.user);
@@ -50,14 +51,14 @@ const Dashboard: React.FC = () => {
 
   return (
     <Layout>
-      <Content className="dashboard-container" style={{ padding: '24px' }}>
+      <Header className="dashboard-header">
+        <DashboardMenu onLogout={handleLogout} />
+      </Header>
+      <Content className="dashboard-container">
         <Row gutter={[16, 16]}>
           <Col span={24}>
             {authUser && (
-              <UserDetails 
-                user={authUser} 
-                onLogout={handleLogout} 
-              />
+              <UserDetails user={authUser} />
             )}
           </Col>
           <Col span={24}>

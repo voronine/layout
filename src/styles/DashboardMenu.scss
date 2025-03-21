@@ -1,0 +1,12 @@
+@import '../styles/main.scss';
+
+.menu-right {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #fff;
+  padding: 0; 
+}
+
+.menu-right .ant-menu-item {
+  border: none;
+}

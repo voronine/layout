@@ -1,14 +1,12 @@
 import React from 'react';
-import { Button } from 'antd';
 import { User } from '../../types/User';
 import '../../styles/UserDetails.scss';
 
 interface UserDetailsProps {
   user: User;
-  onLogout: () => void;
 }
 
-const UserDetails: React.FC<UserDetailsProps> = ({ user, onLogout }) => {
+const UserDetails: React.FC<UserDetailsProps> = ({ user }) => {
   return (
     <div className="user-details">
       <div className="user-info-wrapper">
@@ -25,9 +23,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user, onLogout }) => {
           <p><strong>Email:</strong> {user.email}</p>
         </div>
       </div>
-      <Button className="logout-btn" type="default" onClick={onLogout}>
-        Logout
-      </Button>
     </div>
   );
 };
