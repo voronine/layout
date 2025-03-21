@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from './redux/slices/aythSlice';
 import Navigation from './navigation/Navigation';
+import { loginSuccess } from './redux/slices/aythSlice';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Router basename="/layout/">
+    <Router>
       <Navigation />
     </Router>
   );
