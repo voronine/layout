@@ -16,7 +16,7 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Router basename="/dashboard/">
+    <Router basename="/layout/">
       <Navigation />
     </Router>
   );
