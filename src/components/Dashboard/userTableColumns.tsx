@@ -15,13 +15,13 @@ export const userTableColumns: ColumnsType<User> = [
     dataIndex: 'lastName',
     key: 'lastName',
     sorter: (a: User, b: User) => a.lastName.localeCompare(b.lastName),
-    width: '40%',
+    width: '35%',
   },
   {
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
     sorter: (a: User, b: User) => a.age - b.age,
-    width: '20%',
+    width: '25%',
   },
 ];
