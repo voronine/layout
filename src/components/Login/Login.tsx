@@ -54,7 +54,7 @@ const Login: React.FC = () => {
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
             {errorMessage && (
-              <div className="error-message" style={{ color: 'red', marginBottom: '16px' }}>
+              <div className="error-message">
                 {errorMessage}
               </div>
             )}
