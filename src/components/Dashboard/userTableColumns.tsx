@@ -1,6 +1,6 @@
 import type { ColumnsType } from 'antd/es/table';
 import { User } from '../../types/User';
-import UserRow from './UserRow';
+import UserRow from '../UserRow/UserRow';
 
 export const userTableColumns: ColumnsType<User> = [
   {

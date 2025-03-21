@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useFetchUsers } from '../../hooks/useFetchUsers';
 import { logout } from '../../redux/slices/aythSlice';
-import UserDetails from './UserDetails';
+import UserDetails from '../UserDetails/UserDetails';
 import '../../styles/Dashboard.scss';
 import { User } from '../../types/User';
 import DashboardMenu from '../Menu/DashboardMenu';
