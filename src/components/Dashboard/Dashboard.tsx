@@ -1,11 +1,12 @@
 import React from 'react'; 
-import { Table, Row, Col, Button, Layout } from 'antd';
+import { Table, Row, Col, Layout } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useFetchUsers } from '../../hooks/useFetchUsers';
 import { logout } from '../../redux/slices/aythSlice';
 import UserRow from './UserRow';
+import UserDetails from './UserDetails';
 import '../../styles/Dashboard.scss';
 import { User } from '../../types/User';
 
@@ -52,27 +53,13 @@ const Dashboard: React.FC = () => {
       <Content className="dashboard-container" style={{ padding: '24px' }}>
         <Row gutter={[16, 16]}>
           <Col span={24}>
-            <div className="user-details">
-              <div className="user-info-wrapper">
-                {authUser?.image && (
-                  <img 
-                    src={authUser.image} 
-                    alt="Profile" 
-                    className="user-avatar" 
-                  />
-                )}
-                <div className="user-info">
-                  <p><strong>First Name:</strong> {authUser?.firstName}</p>
-                  <p><strong>Last Name:</strong> {authUser?.lastName}</p>
-                  <p><strong>Email:</strong> {authUser?.email}</p>
-                </div>
-              </div>
-              <Button className="logout-btn" type="default" onClick={handleLogout}>
-                Logout
-              </Button>
-            </div>
+            {authUser && (
+              <UserDetails 
+                user={authUser} 
+                onLogout={handleLogout} 
+              />
+            )}
           </Col>
-          
           <Col span={24}>
             <Table<User>
               dataSource={users}
@@ -80,7 +67,7 @@ const Dashboard: React.FC = () => {
               rowKey="id"
               loading={loading}
               pagination={{ pageSize: 10 }}
-              tableLayout="fixed" 
+              tableLayout="fixed"
             />
           </Col>
         </Row>
