@@ -5,7 +5,7 @@
 ## Демонстрация
 
 Пример страницы Dashboard с подробной информацией о залогиненном пользователе и таблицей всех пользователей, доступный по адресу:  
-[https://voronine.github.io/dashboard](https://voronine.github.io/layout/)
+[https://voronine.github.io/layout](https://voronine.github.io/layout/)
 
 - **Данные для тестового логина:**  
   **username:** emilys  
