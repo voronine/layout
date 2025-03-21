@@ -1,10 +1,13 @@
-import React from 'react';
+import React from 'react'; 
 import { Table, Row, Col, Button, Layout } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useFetchUsers } from '../../hooks/useFetchUsers';
 import { logout } from '../../redux/slices/aythSlice';
+import UserRow from './UserRow';
 import '../../styles/Dashboard.scss';
+import { User } from '../../types/User';
 
 const { Content } = Layout;
 
@@ -18,8 +21,14 @@ const Dashboard: React.FC = () => {
     dispatch(logout());
   };
 
-  const columns = [
-    { title: 'First Name', dataIndex: 'firstName', key: 'firstName' },
+  const columns: ColumnsType<User> = [
+    {
+      title: 'First Name',
+      key: 'firstName',
+      render: (_text: string, record: User) => (
+        <UserRow user={record} />
+      ),
+    },
     { title: 'Last Name', dataIndex: 'lastName', key: 'lastName' },
     { title: 'Age', dataIndex: 'age', key: 'age' },
   ];
@@ -38,16 +47,12 @@ const Dashboard: React.FC = () => {
                     className="user-avatar" 
                   />
                 )}
-
                 <div className="user-info">
                   <p><strong>First Name:</strong> {authUser?.firstName}</p>
-
                   <p><strong>Last Name:</strong> {authUser?.lastName}</p>
-
                   <p><strong>Email:</strong> {authUser?.email}</p>
                 </div>
               </div>
-
               <Button className="logout-btn" type="default" onClick={handleLogout}>
                 Logout
               </Button>
@@ -55,7 +60,7 @@ const Dashboard: React.FC = () => {
           </Col>
           
           <Col span={24}>
-            <Table
+            <Table<User>
               dataSource={users}
               columns={columns}
               rowKey="id"
